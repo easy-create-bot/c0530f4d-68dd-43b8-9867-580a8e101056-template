@@ -12,17 +12,23 @@ export default function Homepage() {
 }
 
 function Main() {
-    const [heroInformation] = useState(config[`website-name`] ? {
-        name: config['website-name'].value || 'Website Name',
-        nameColor: config['website-name'].color || 'black',
-        statement: config['action-statement'].value || 'Action Statement',
-        statementColor: config['action-statement'].color || 'black'
-    } : {
-        name: 'Website Name',
-        nameColor: 'black',
-        statement: 'Action Statement',
-        statementColor: 'black'
-    })
+    const [heroInformation] = useState(() => {
+        if (config) {
+            return {
+                name: config['website-name'] ? (config['website-name'].value || 'Website Name') : 'Website Name',
+                nameColor: config['website-name'] ? (config['website-name'].color || 'black') : 'black',
+                statement: config['action-statement'] ? (config['action-statement'].value || 'Action Statement') : 'Action Statement',
+                statementColor: config['action-statement'] ? (config['action-statement'].color || 'black') : 'black'
+            };
+        } else {
+            return {
+                name: 'Website Name',
+                nameColor: 'black',
+                statement: 'Action Statement',
+                statementColor: 'black'
+            };
+        }
+    });
 
     return (
         <div className="h-[75vh] w-full border-b border-ui-border-base relative bg-ui-bg-subtle">
