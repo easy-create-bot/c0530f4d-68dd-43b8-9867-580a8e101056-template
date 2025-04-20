@@ -13,10 +13,10 @@ export default function Homepage() {
 
 function Main() {
     const [heroInformation] = useState(config[`website-name`] ? {
-        name: config['website-name'].value,
-        nameColor: config['website-name'].color,
-        statement: config['action-statement'].value,
-        statementColor: config['action-statement'].color
+        name: config['website-name'].value || 'Website Name',
+        nameColor: config['website-name'].color || 'black',
+        statement: config['action-statement'].value || 'Action Statement',
+        statementColor: config['action-statement'].color || 'black'
     } : {
         name: 'Website Name',
         nameColor: 'black',
